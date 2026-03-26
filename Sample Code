@@ -1,0 +1,76 @@
+def convertbase(newbase):
+    if newbase < 2:
+        raise ValueError("base must be >= 2")
+
+    x_str = input("Input the number to convert into the chosen base...\n")
+    if is_Number(x_str) == 'No':
+        print("You inputted a non-number somewhere")
+        return
+    x = float(x_str)
+
+    if x < 0:
+        sign = '-'
+    else:
+        sign = ''
+    ax = abs(x)
+    big = int(ax // 1)
+    small = ax - big
+
+    result_big = convertbase_Big(newbase, big)
+    result_small = convertbase_Small(newbase, small)
+
+    if result_small:
+        answer = result_big + '.' + result_small
+    else:
+        answer = result_big
+    answer = sign + answer
+    print(answer)
+    return
+
+def convertbase_Big(base_int, num):
+    if base_int < 2:
+        raise ValueError("base must be >= 2")
+    if num == 0:
+        return "0"
+    y = (base_int + 1, 0)
+    result = []
+    unprocessed = int(num)
+    while unprocessed >= base_int:
+        y = divmod(unprocessed, base_int)
+        result.append(y[1])
+        unprocessed = y[0]
+    result.append(unprocessed)
+    result.reverse()
+    result = [str(element) for element in result]
+    if base_int > 10:
+        return ', '.join(result)
+    else:
+        return ''.join(result)
+
+def convertbase_Small(base_int, num, max_digits=12):
+    if base_int < 2:
+        raise ValueError("base must be >= 2")
+    if not (0 <= num < 1):
+        raise ValueError("num must be from 0 up to (but not including) 1")
+    if num == 0:
+        return ''
+    result = []
+    f = float(num)
+    for d in range(max_digits):
+        f = f * base_int
+        d = int(f)
+        result.append(str(d))
+        f = f - d
+        if f == 0:
+            break
+    if base_int > 10:
+        return ', '.join(result)
+    else:
+        return ''.join(result)
+
+def is_Number(x):
+    try:
+        float(x)
+        return ''
+    except:
+        return 'No'
