@@ -8,7 +8,6 @@ FUNCTIONAL REQUIREMENTS
 
 - Users can track their progress of modules.
 - Users recieve comprehensive marking on their completed modules.
-- Users can recover their accounts through email connection
 - Users can access interactive tutorials
 - Users are given feedback to their inputs and work.
 - Users can view progress
