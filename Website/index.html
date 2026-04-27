@@ -8,13 +8,22 @@
 
 	<style>
 
-		html { scrollbar-width: none;}
+		:root {
+			--nav-height: 80px;
+		}
+
+		html {
+			scroll-behavior: smooth;
+			scrollbar-width: none;
+			overflow-y: auto
+		}
 
 		body {
 			margin: 0;
 			padding: 0;
 			font-family : Arial, sans-serif;
 			background-color:white;
+		 
 		
 		}
 
@@ -134,26 +143,23 @@
 		}
 
 		.courses-page {
-			min-height: 100vh;
-			padding-top: var(--nav-height); 
+ 
 			box-sizing: border-box; 
-
+			
 			font-size: small;
 			display: flex;
 			flex-direction: column;
 		
 		}
 
-		:root {
-			--nav-height: 80px;
-		}
+		
 
 		.map-container {
     		position: relative;
     		width: 100%;
-    		min-height: 100vh;
+    		min-height: calc(100vh - var(--nav-height));
     		background-color: #f9f9f9;
-    		overflow: hidden;
+    		
 		}
 
 		.map-svg {
@@ -234,7 +240,7 @@
 			
 			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up-icon lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>
 			
-			<a href="#" style="color: white; text-decoration: none; font-size: 2.2rem; font-weight: bold; margin-left: 20px;">Show Courses</a>
+			<a href="javascript:void(0)" id="scroll-btn" style="color: white; text-decoration: none; font-size: 2.2rem; font-weight: bold; margin-left: 20px;">Show Courses</a>
 			
 			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up-icon lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>
 			

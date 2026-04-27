@@ -47,3 +47,15 @@ function openPopup(m) {
     
     popup.style.display = 'block';
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('scroll-btn');
+    if (btn) {
+        btn.addEventListener('click', () => {
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
