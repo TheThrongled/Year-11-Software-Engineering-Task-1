@@ -1,10 +1,10 @@
 const milestones = [
-    { id: 1, x: 14, y: 48, title: "Intro to Logic" },
-    { id: 2, x: 33, y: 37, title: "Variables 101" },
-    { id: 3, x: 31, y: 85, title: "Functions" },
-    { id: 4, x: 57, y: 64, title: "Iterations" },
-    { id: 5, x: 76, y: 79, title: "Objects" },
-    { id: 6, x: 87, y: 40, title: "Heuristics" }
+    { id: 1, x: 14, y: 40, title: "Intro to Logic" },
+    { id: 2, x: 33, y: 30, title: "Variables 101" },
+    { id: 3, x: 31, y: 75, title: "Functions" },
+    { id: 4, x: 57, y: 57, title: "Iterations" },
+    { id: 5, x: 76, y: 70, title: "Objects" },
+    { id: 6, x: 87, y: 30, title: "Heuristics" }
 ];
 
 const nodesLayer = document.getElementById('nodes-layer');
@@ -48,14 +48,3 @@ function openPopup(m) {
     popup.style.display = 'block';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('scroll-btn');
-    if (btn) {
-        btn.addEventListener('click', () => {
-            window.scrollTo({
-                top: document.documentElement.scrollHeight,
-                behavior: 'smooth'
-            });
-        });
-    }
-});
