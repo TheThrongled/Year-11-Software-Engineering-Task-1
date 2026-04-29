@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Shell</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            height: 100vh;
+            display: flex;
+            padding-left: 1%;
+            background: #2c5d97;
+        }
+
+        /* Left Sidebar */
+        #sidebar {
+            width: 300px;
+            padding: 0;
+            margin: 0;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-header { padding: 20px; border-bottom: 1px solid #ccc; font-size: 24px; font-weight: bold; }
+        .question-list {
+            padding: 0;
+            border-bottom: 1px solid #eee;
+            color: #333;
+            list-style: none;
+            margin: 0;
+
+        }
+
+        #sidebar-list li {
+            padding: 20px 25px; /* Top/Bottom: 20px, Left/Right: 25px */
+            border-bottom: 1px solid #eee;
+            color: #333;
+            font-size: 16px;
+            display: block; /* Makes the whole area "clickable" and padded */
+            cursor: pointer;          /* Makes the "hand" icon appear */
+            user-select: none;        /* Stops the "blue highlight" text selection */
+            transition: background 0.2s;
+        
+        }
+
+        #sidebar-list li:hover {
+            background: #f9f9f9;      /* Subtle grey flash when you hover */
+        }
+
+
+
+        /* The "You Are Here" style */
+        #sidebar-list li.active {
+            color: #2c5d97;
+            font-weight: bold;
+            padding-left: 5px; /* Slight nudge to make it stand out */
+        }
+
+
+
+
+        /* Main Content Area */
+        #main-content {
+            flex-grow: 1;
+             /* Solid blue from your storyboard */
+            color: white;
+            position: relative;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Close Button (X) */
+        .btn-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #444;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Dynamic Title (Info or Quiz) */
+        #content-title { font-size: 48px; margin-bottom: 30px; }
+
+        /* Content Card */
+        #content-body {
+            background: rgba(255, 255, 255, 0.1); /* Subtle box for text/options */
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            min-height: 200px;
+            text-align: center;
+            line-height: 1.6
+        }
+
+        /* Next Button */
+        .btn-next {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: #76b852;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Styling for the dynamically generated quiz buttons */
+            .quiz-btn {
+                display: block;
+                width: 100%;
+                margin: 12px 0;
+                padding: 15px;
+                background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+                color: white;
+                border: 2px solid rgba(255, 255, 255, 0.4);
+                border-radius: 10px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: all 0.2s ease;
+                text-align: left; /* Usually looks better for long options */
+            }
+
+            .quiz-btn:hover {
+                background: rgba(255, 255, 255, 0.3);
+                transform: translateX(5px); /* Slight nudge when hovering */
+            }
+
+            /* Classes for when the user clicks */
+            .correct {
+                background-color: #76b852 !important; /* Green */
+                border-color: #76b852;
+            }
+
+            .incorrect {
+                background-color: #e74c3c !important; /* Red */
+                border-color: #e74c3c;
+                opacity: 0.7;
+            }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Shell -->
+    <aside id="sidebar">
+        <div class="course-header" id="course-name">Course Name</div>
+        <ul class="question-list" id="sidebar-list">
+            <li>1. Example of a question</li>
+        </ul>
+    </aside>
+
+    <!-- Content Shell -->
+    <main id="main-content">
+        <button class="btn-close" onclick="window.location.href='index.html'">X</button>
+        
+        <h1 id="content-title">Loading...</h1>
+
+        <div id="content-body">
+            <!-- JS will inject "Amazing info" or "Quiz options" here -->
+        </div>
+
+        <button id="next-btn" class="btn-next" onclick="nextStep()">Next</button>
+    </main>
+
+    <script src="content.js"></script>
+
+    <script src="quizmaker.js"></script>
+
+</body>
+</html>
